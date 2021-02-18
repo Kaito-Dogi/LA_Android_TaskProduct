@@ -23,17 +23,11 @@ class MainActivity : AppCompatActivity() {
 
         val bookList = readAll()
 
-        // タスクリストが空だったときにダミーデータを生成する
-        if (bookList.isEmpty()) {
-            createDummyData()
-        }
-
         val adapter =
             BookAdapter(this, bookList, object: BookAdapter.OnItemClickListener {
                 override fun onItemClick(item: Book) {
                     // クリック時の処理
-                    Toast.makeText(applicationContext, item.title + "の編集画面に移動しました", Toast.LENGTH_SHORT).show()
-                    toEdit(item.id)
+                    toDetail(item.id)
                 }
             }, true)
 
@@ -52,35 +46,14 @@ class MainActivity : AppCompatActivity() {
         realm.close()
     }
 
-    fun createDummyData() {
-        for (i in 0..20) {
-            create("本$i", "著者名$i")
-        }
-    }
-
-    fun create(title: String, author: String) {
-        realm.executeTransaction {
-            val book = it.createObject(Book::class.java, UUID.randomUUID().toString())
-            book.title = title
-            book.author = author
-        }
-    }
-
     fun readAll(): RealmResults<Book> {
         return realm.where(Book::class.java).findAll().sort("createdAt", Sort.ASCENDING)
     }
 
-    fun delete(id: String) {
-        realm.executeTransaction {
-            val task = realm.where(Book::class.java).equalTo("id", id).findFirst()
-                ?: return@executeTransaction
-            task.deleteFromRealm()
-        }
+    fun toDetail(id: String) {
+        val detailIntent = Intent(applicationContext, DetailActivity::class.java)
+        detailIntent.putExtra("id", id)
+        startActivity(detailIntent)
     }
 
-    fun toEdit(id: String) {
-        val editIntent = Intent(applicationContext, DetailActivity::class.java)
-        editIntent.putExtra("id", id)
-        startActivity(editIntent)
-    }
 }

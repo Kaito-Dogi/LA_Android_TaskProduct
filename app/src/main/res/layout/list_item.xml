@@ -36,7 +36,7 @@
             android:paddingLeft="4dp"
             android:paddingRight="4dp"
             android:text="タイトル"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -54,7 +54,7 @@
                 android:paddingLeft="4dp"
                 android:paddingRight="4dp"
                 android:text="著者名"
-                android:textSize="12sp" />
+                android:textSize="8sp" />
 
             <TextView
                 android:id="@+id/timeAgoTextView"
