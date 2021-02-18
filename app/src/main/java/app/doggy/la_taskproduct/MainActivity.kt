@@ -3,6 +3,7 @@ package app.doggy.la_taskproduct
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import io.realm.Realm
 import io.realm.RealmResults
@@ -27,7 +28,14 @@ class MainActivity : AppCompatActivity() {
             createDummyData()
         }
 
-        val adapter = BookAdapter(this, bookList, true)
+        val adapter =
+            BookAdapter(this, bookList, object: BookAdapter.OnItemClickListener {
+                override fun onItemClick(item: Book) {
+                    // クリック時の処理
+                    Toast.makeText(applicationContext, item.title + "の編集画面に移動しました", Toast.LENGTH_SHORT).show()
+                    toEdit(item.id)
+                }
+            }, true)
 
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = GridLayoutManager(baseContext, 3)
@@ -60,5 +68,19 @@ class MainActivity : AppCompatActivity() {
 
     fun readAll(): RealmResults<Book> {
         return realm.where(Book::class.java).findAll().sort("createdAt", Sort.ASCENDING)
+    }
+
+    fun delete(id: String) {
+        realm.executeTransaction {
+            val task = realm.where(Book::class.java).equalTo("id", id).findFirst()
+                ?: return@executeTransaction
+            task.deleteFromRealm()
+        }
+    }
+
+    fun toEdit(id: String) {
+        val editIntent = Intent(applicationContext, PostActivity::class.java)
+        editIntent.putExtra("id", id)
+        startActivity(editIntent)
     }
 }
