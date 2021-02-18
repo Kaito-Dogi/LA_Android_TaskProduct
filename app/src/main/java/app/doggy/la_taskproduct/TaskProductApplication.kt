@@ -13,6 +13,10 @@ class TaskProductApplication : Application() {
             .deleteRealmIfMigrationNeeded()
             .build()
         Realm.setDefaultConfiguration(realmConfig)
-        Log.d("TaskProductApplication", "TaskProductApplication has been created.")
+
+        if (BuildConfig.DEBUG) {
+            Log.d("TaskProductApplication", "TaskProductApplication has been created.")
+        }
+
     }
 }
