@@ -6,11 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".PostActivity">
+    tools:context=".PostActivity" >
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" >
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBarPost"
@@ -29,51 +29,83 @@
         android:padding="32dp"
         app:srcCompat="@drawable/book_black" />
 
-    <EditText
-        android:id="@+id/titleEditTextView"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/titleTextField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:ems="10"
-        android:hint="タイトル"
-        android:inputType="textPersonName" />
+        android:hint="タイトル">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/titleEditTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textSize="14sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal" >
 
-        <EditText
-            android:id="@+id/authorEditTextView"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/authorTextField"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:layout_weight="0.8"
-            android:ems="10"
-            android:hint="著者名"
-            android:inputType="textPersonName" />
+            android:hint="著者名">
 
-        <EditText
-            android:id="@+id/priceEditTextView"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/authorEditTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/priceTextField"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.2"
-            android:ems="10"
-            android:hint="金額"
-            android:inputType="number" />
+            android:hint="金額">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/priceEditTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/contentEditTextView"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/contentTextField"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="8dp"
         android:layout_weight="1"
-        android:ems="10"
-        android:gravity="top"
-        android:hint="説明"
-        android:inputType="textPersonName" />
+        android:hint="説明">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/contentEditTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ems="10"
+            android:gravity="top"
+            android:inputType="textPersonName"
+            android:textSize="14sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/addButton"
