@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
     fun createDummyData() {
         for (i in 0..20) {
-            create("本$i", "作者$i")
+            create("本$i", "著者名$i")
         }
     }
 
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun toEdit(id: String) {
-        val editIntent = Intent(applicationContext, PostActivity::class.java)
+        val editIntent = Intent(applicationContext, DetailActivity::class.java)
         editIntent.putExtra("id", id)
         startActivity(editIntent)
     }

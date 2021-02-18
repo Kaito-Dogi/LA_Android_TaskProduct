@@ -13,30 +13,29 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBarPost"
+            android:id="@+id/topAppBarDetail"
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:menu="@menu/top_app_bar_post" />
+            app:menu="@menu/top_app_bar_detail" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <ImageView
-        android:id="@+id/bookImageViewInPost"
+        android:id="@+id/bookImageViewInDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:padding="32dp"
         app:srcCompat="@drawable/book_black" />
 
-    <EditText
-        android:id="@+id/titleEditTextView"
+    <TextView
+        android:id="@+id/titleTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
         android:ems="10"
-        android:hint="タイトル"
-        android:inputType="textPersonName" />
+        android:text="タイトル" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,43 +43,32 @@
         android:layout_margin="8dp"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/authorEditTextView"
+        <TextView
+            android:id="@+id/authorTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:layout_weight="0.8"
             android:ems="10"
-            android:hint="著者名"
-            android:inputType="textPersonName" />
+            android:text="著者名" />
 
-        <EditText
-            android:id="@+id/priceEditTextView"
+        <TextView
+            android:id="@+id/priceTextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.2"
             android:ems="10"
-            android:hint="金額"
-            android:inputType="textPersonName" />
+            android:text="金額" />
     </LinearLayout>
 
-    <EditText
-        android:id="@+id/contentEditTextView"
+    <TextView
+        android:id="@+id/contentTextView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="8dp"
         android:layout_weight="1"
         android:ems="10"
         android:gravity="top"
-        android:hint="説明"
-        android:inputType="textPersonName" />
-
-    <Button
-        android:id="@+id/addButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:padding="12dp"
-        android:text="追加" />
+        android:text="説明" />
 
 </LinearLayout>

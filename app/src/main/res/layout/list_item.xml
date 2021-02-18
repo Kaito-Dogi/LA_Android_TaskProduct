@@ -22,8 +22,7 @@
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:layout_margin="8dp"
-            app:tint="#333333"
-            card_view:srcCompat="@drawable/book" />
+            card_view:srcCompat="@drawable/book_white" />
 
         <TextView
             android:id="@+id/titleTextView"
@@ -36,7 +35,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="4dp"
             android:paddingRight="4dp"
-            android:text="本の名前"
+            android:text="タイトル"
             android:textSize="18sp" />
 
         <LinearLayout
@@ -54,7 +53,7 @@
                 android:layout_weight="1"
                 android:paddingLeft="4dp"
                 android:paddingRight="4dp"
-                android:text="作者名"
+                android:text="著者名"
                 android:textSize="12sp" />
 
             <TextView
