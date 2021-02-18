@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import io.realm.Realm
 import io.realm.RealmResults
@@ -39,6 +40,13 @@ class MainActivity : AppCompatActivity() {
             val postIntent = Intent(applicationContext, PostActivity::class.java)
             startActivity(postIntent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        explainTextView.isVisible = readAll().isEmpty()
+
     }
 
     override fun onDestroy() {
