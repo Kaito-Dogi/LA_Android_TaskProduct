@@ -47,8 +47,10 @@ class DetailActivity : AppCompatActivity() {
                 }
 
                 R.id.delete -> {
-                    delete(id as String)
-                    finish()
+                    val newFragment = DeleteDialogFragment(id as String)
+                    newFragment.show(supportFragmentManager, "delete")
+                    //delete(id as String)
+                    //finish()
                     true
                 }
 
@@ -59,12 +61,9 @@ class DetailActivity : AppCompatActivity() {
 
     }
 
-    fun delete(id: String) {
-        realm.executeTransaction {
-            val book = realm.where(Book::class.java).equalTo("id", id).findFirst()
-                ?: return@executeTransaction
-            book.deleteFromRealm()
-        }
+    override fun onDestroy() {
+        super.onDestroy()
+        realm.close()
     }
 
 }

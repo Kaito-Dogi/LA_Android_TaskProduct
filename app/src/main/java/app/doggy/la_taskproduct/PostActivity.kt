@@ -79,6 +79,11 @@ class PostActivity : AppCompatActivity() {
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        realm.close()
+    }
+
     fun create(title: String, author: String, price: Int, content: String) {
         realm.executeTransaction {
             val book = it.createObject(Book::class.java, UUID.randomUUID().toString())
