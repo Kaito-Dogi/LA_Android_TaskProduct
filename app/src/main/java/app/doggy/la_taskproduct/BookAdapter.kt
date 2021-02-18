@@ -28,7 +28,7 @@ class BookAdapter(
         holder.titleTextView.text = book.title
         holder.authorTextView.text = book.author
         holder.timeAgoTextView.text =
-            SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.JAPANESE).format(book.createdAt)
+            SimpleDateFormat("yyyy/MM/dd\nHH:mm:ss", Locale.JAPANESE).format(book.createdAt)
 
     }
 

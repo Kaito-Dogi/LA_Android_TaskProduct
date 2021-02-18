@@ -45,16 +45,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun createDummyData() {
-        for (i in 0..10) {
-            create(R.drawable.ic_launcher_background, "やること $i")
+        for (i in 0..20) {
+            create("本$i", "作者$i")
         }
     }
 
-    fun create(bookImageId: Int, title: String) {
+    fun create(title: String, author: String) {
         realm.executeTransaction {
-            val task = it.createObject(Book::class.java, UUID.randomUUID().toString())
-            task.bookImageId = bookImageId
-            task.title = title
+            val book = it.createObject(Book::class.java, UUID.randomUUID().toString())
+            book.title = title
+            book.author = author
         }
     }
 
