@@ -86,11 +86,11 @@ class MainActivity : AppCompatActivity() {
         realm.close()
     }
 
-    fun search(title: String): RealmResults<Book> {
+    private fun search(title: String): RealmResults<Book> {
         return realm.where(Book::class.java).contains("title", title).findAll()
     }
 
-    fun readAll(): RealmResults<Book> {
+    private fun readAll(): RealmResults<Book> {
         return realm.where(Book::class.java).findAll().sort("createdAt", Sort.ASCENDING)
     }
 

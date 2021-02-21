@@ -38,7 +38,7 @@ class DeleteDialogFragment(val bookId: String): DialogFragment() {
         realm.close()
     }
 
-    fun delete(id: String) {
+    private fun delete(id: String) {
         realm.executeTransaction {
             val book = realm.where(Book::class.java).equalTo("id", id).findFirst()
                 ?: return@executeTransaction

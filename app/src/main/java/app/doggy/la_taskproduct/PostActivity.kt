@@ -86,7 +86,7 @@ class PostActivity : AppCompatActivity() {
                 )
                 finish()
 
-            } else if (id != null) {
+            } else {
                 update(
                     id,
                     titleEditTextView.text.toString(),
@@ -120,7 +120,7 @@ class PostActivity : AppCompatActivity() {
         realm.close()
     }
 
-    fun create(title: String, author: String, price: Int, content: String) {
+    private fun create(title: String, author: String, price: Int, content: String) {
         realm.executeTransaction {
             val book = it.createObject(Book::class.java, UUID.randomUUID().toString())
             book.title = title
@@ -130,7 +130,7 @@ class PostActivity : AppCompatActivity() {
         }
     }
 
-    fun update(id: String, title: String, author: String, price: Int, content: String) {
+    private fun update(id: String, title: String, author: String, price: Int, content: String) {
         realm.executeTransaction {
             val book = realm.where(Book::class.java).equalTo("id", id).findFirst()
                 ?: return@executeTransaction
