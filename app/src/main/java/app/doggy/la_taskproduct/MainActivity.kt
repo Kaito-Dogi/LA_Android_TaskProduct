@@ -45,6 +45,33 @@ class MainActivity : AppCompatActivity() {
             val barcodeIntent = Intent(applicationContext, BarcodeActivity::class.java)
             startActivity(barcodeIntent)
         }
+
+        searchButton.setOnClickListener {
+
+            val searchWord: String = searchEditText.text.toString()
+
+            val searchedBookList = search(searchEditText.text.toString())
+
+            val searchedAdapter =
+                    BookAdapter(this, searchedBookList, object: BookAdapter.OnItemClickListener {
+                        override fun onItemClick(item: Book) {
+                            // クリック時の処理
+                            toDetail(item.id)
+                        }
+                    }, true)
+
+            recyclerView.adapter = searchedAdapter
+
+            if (searchedBookList.isEmpty()) {
+                explainTextView.text = "「${searchWord}」を含む本はありません"
+                explainTextView.isVisible = true
+
+            } else {
+                explainTextView.text = "読んだ本を登録しよう！"
+                explainTextView.isVisible = false
+            }
+
+        }
     }
 
     override fun onResume() {
@@ -57,6 +84,10 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         realm.close()
+    }
+
+    fun search(title: String): RealmResults<Book> {
+        return realm.where(Book::class.java).contains("title", title).findAll()
     }
 
     fun readAll(): RealmResults<Book> {

@@ -118,7 +118,7 @@
             android:layout_height="match_parent"
             android:ems="10"
             android:gravity="top"
-            android:inputType="textPersonName"
+            android:inputType="textMultiLine"
             android:textColor="#222222"
             android:textSize="14sp" />
 
