@@ -29,7 +29,7 @@ class DetailActivity : AppCompatActivity() {
         val book = realm.where(Book::class.java).equalTo("id", id).findFirst()
         titleTextView.text = book?.title
         authorTextView.text = book?.author
-        priceTextView.text = book?.price.toString()
+        priceTextView.text = "¥" + book?.price.toString()
         contentTextView.text = book?.content.toString()
 
         topAppBarDetail.setOnMenuItemClickListener { menuItem ->

@@ -24,55 +24,123 @@
     <ImageView
         android:id="@+id/bookImageViewInDetail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:padding="32dp"
+        android:layout_height="240dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
+        android:padding="16dp"
+        android:scaleType="fitCenter"
         app:srcCompat="@drawable/book_black" />
+
+    <TextView
+        android:id="@+id/titleCaption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="18dp"
+        android:ems="10"
+        android:text="タイトル"
+        android:textSize="10sp" />
 
     <TextView
         android:id="@+id/titleTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
+        android:fontFamily="sans-serif-condensed-medium"
         android:text="タイトル"
-        android:textSize="14sp" />
+        android:textColor="#222222"
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="8dp"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/authorTextView"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="8dp"
             android:layout_weight="0.8"
-            android:ems="10"
-            android:text="著者名"
-            android:textSize="14sp" />
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/priceTextView"
+            <TextView
+                android:id="@+id/authorCaption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="著者名"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/authorTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="著者名"
+                android:textColor="#222222"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.2"
-            android:ems="10"
-            android:text="金額"
-            android:textSize="14sp" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/priceCaption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="金額"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/priceTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="金額"
+                android:textColor="#222222"
+                android:textSize="18sp" />
+        </LinearLayout>
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/contentCaption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:gravity="top"
+        android:text="説明"
+        android:textSize="10sp" />
 
     <TextView
         android:id="@+id/contentTextView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         android:layout_weight="1"
         android:ems="10"
         android:gravity="top"
         android:text="説明"
-        android:textSize="14sp" />
+        android:textColor="#222222"
+        android:textSize="18sp" />
 
 </LinearLayout>

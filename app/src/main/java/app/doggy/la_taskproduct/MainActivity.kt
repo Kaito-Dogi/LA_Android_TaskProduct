@@ -33,12 +33,17 @@ class MainActivity : AppCompatActivity() {
             }, true)
 
         recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = GridLayoutManager(baseContext, 3)
+        recyclerView.layoutManager = GridLayoutManager(baseContext, 2)
         recyclerView.adapter = adapter
 
         postButton.setOnClickListener {
             val postIntent = Intent(applicationContext, PostActivity::class.java)
             startActivity(postIntent)
+        }
+
+        barcodeButton.setOnClickListener {
+            val barcodeIntent = Intent(applicationContext, BarcodeActivity::class.java)
+            startActivity(barcodeIntent)
         }
     }
 

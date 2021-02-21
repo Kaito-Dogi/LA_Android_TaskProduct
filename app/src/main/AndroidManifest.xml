@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.doggy.la_taskproduct">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:name=".TaskProductApplication"
         android:allowBackup="true"
@@ -10,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LA_TaskProduct">
-        <activity android:name=".DetailActivity"></activity>
+        <activity android:name=".BarcodeActivity"></activity>
+        <activity android:name=".DetailActivity" />
         <activity android:name=".PostActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

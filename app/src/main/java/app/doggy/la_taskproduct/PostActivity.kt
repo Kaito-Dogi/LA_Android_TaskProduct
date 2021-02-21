@@ -2,12 +2,21 @@ package app.doggy.la_taskproduct
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
+import com.google.gson.FieldNamingPolicy
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import io.realm.Realm
+import kotlinx.android.synthetic.main.activity_barcode.*
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.activity_post.*
 import kotlinx.android.synthetic.main.activity_post.container
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.runBlocking
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
 class PostActivity : AppCompatActivity() {
@@ -32,6 +41,33 @@ class PostActivity : AppCompatActivity() {
             contentEditTextView.setText(book?.content)
 
             addButton.text = "更新"
+        }
+
+        val isbn: String? = intent.getStringExtra("isbn")
+
+        if (isbn != null) {
+            val gson: Gson =
+                GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create()
+            val retrofit: Retrofit = Retrofit.Builder()
+                .baseUrl("https://www.googleapis.com/books/v1/")
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build()
+            val bookFromIsbnService: BookFromIsbnService = retrofit.create(BookFromIsbnService::class.java)
+
+            runBlocking(Dispatchers.IO) {
+                runCatching {
+                    bookFromIsbnService.getBook("isbn:$isbn")
+                }
+            }.onSuccess {
+                //bookImageView.load(it.avatarUrl)
+                titleEditTextView.setText(it.items[0].volumeInfo.title)
+                authorEditTextView.setText(it.items[0].volumeInfo.authors[0])
+                contentEditTextView.setText(it.items[0].volumeInfo.content)
+                Toast.makeText(applicationContext, "成功", Toast.LENGTH_SHORT).show()
+            }.onFailure {
+                Toast.makeText(applicationContext, "失敗", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
         addButton.setOnClickListener {
